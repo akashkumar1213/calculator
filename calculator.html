@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calculatorstyle.css">
+</head>
+
+<body>
+    <div class="div">
+        <div class="cal" id="cal">
+            <input type="text" id="input" class="input">
+            <input type="text" id="h3">
+            <div class="num">
+                <button class="button" id="btnc">c</button>
+                <button class="button" id="btnmo">%</button>
+                <button class="button" id="btnd">/</button>
+                <button class="button" id="btnx">X</button>
+                <button class="button" id="btn7">7</button>
+                <button class="button" id="btn8">8</button>
+                <button class="button" id="btn9">9</button>
+                <button class="button" id="btnm">*</button>
+                <button class="button" id="btn4">4</button>
+                <button class="button" id="btn5">5</button>
+                <button class="button" id="btn6">6</button>
+                <button class="button" id="btns">-</button>
+                <button class="button" id="btn1">1</button>
+                <button class="button" id="btn2">2</button>
+                <button class="button" id="btn3">3</button>
+                <button class="button" id="btnp">+</button>
+                <button class="button" id="btnz">00</button>
+                <button class="button" id="btn0">0</button>
+                <button class="button" id="btnp">.</button>
+                <button class="button" id="btne">=</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        let input = document.getElementById('input');
+        let input1 = document.getElementById('h3');
+        let string = '';
+        let i = 0;
+        let buttons = document.querySelectorAll(".button");
+        Array.from(buttons).forEach((button) => {
+            button.addEventListener("click", (e) => {
+                if (e.target.innerHTML == '=') {
+                    string = eval(string);
+                    input1.value = string;
+                }
+                else if (e.target.innerHTML == 'c') {
+                    string = "";
+                    input.value = string;
+                    input1.value =string;
+                }
+                else if (e.target.innerHTML == 'X') {
+                    string = string.substring(0, string.length - 1);
+                    input.value = string;
+                    return i = 0;
+                }
+                else if (e.target.innerHTML.match(/[*+-/.]/)) {
+                if(input.value==''){
+
+                }
+                else{
+                    if (i == '0') {
+                        string += e.target.innerHTML;
+                        input.value = string;
+                        i = 1;
+                        input1.value = "";
+                    }
+                }
+                }
+                else {
+                    string = string + e.target.innerHTML;
+                    input1.value = "";
+                    input.value = string;
+                    return i = 0;
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>
